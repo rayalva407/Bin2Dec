@@ -1,18 +1,27 @@
-import { Text, StyleSheet, TextInput, View, StatusBar } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import {Text, StyleSheet, TextInput, View, Button,} from "react-native";
+import {useState} from "react";
 
 export default function Index() {
+  const [inputValue, setInputValue] = useState("");
+  const binToDec = (binary :string): number => {
+    return parseInt(binary, 10);
+  };
 
   return (
-    <View style={styles.view}>
-      <Text style={styles.headerText}>Bin2Dec</Text>
-      <View><Text style={styles.decimal}>0</Text></View>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter a binary number"
-      />
-    </View>
-  )
+      <View style={styles.view}>
+        <Text style={styles.headerText}>Bin2Dec</Text>
+        <View><Text style={styles.decimal}>0</Text></View>
+        <TextInput
+            style={styles.input}
+            maxLength={8}
+            placeholder="Enter a binary number up to 8 digits"
+        />
+        <Button
+            title={"Submit"}
+            onPress={binToDec("10")}
+        />
+      </View>
+  );
 };
 
 const styles = StyleSheet.create({
